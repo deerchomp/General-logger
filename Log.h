@@ -25,9 +25,28 @@ class Log {
         void writeToFile(fstream& file, string message)
         {
             if(file.is_open()){
+                file << "DATE: " << __DATE__ << '|' << "LINE: " <<
+                    __LINE__ << '|' << "FUNC: " << __func__ <<
+                    '|' << "FILE: " << __FILE__ << endl;
                 file << message << endl;
-                file.close();
             }
+        }
+
+        void flushLastWrite(fstream& file)
+        {
+            file.flush();
+        }
+
+        string assignType(int level)
+        {
+            switch (level)
+            {
+                case 0:
+                    return "warning";
+                case 1:
+                    return "error";
+            }
+            return "null";
         }
 
     private:
