@@ -1,8 +1,10 @@
 all:
-	g++ p1.cpp
-	./a.out
-	cat log.txt
+	g++ -o logger p1.cpp
+	./logger
 
+compile:
+	g++ -o logger p1.cpp
+	
 clean:
 	rm log.txt
-	rm a.out
+	rm logger
